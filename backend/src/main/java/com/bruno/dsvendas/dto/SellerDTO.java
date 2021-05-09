@@ -1,12 +1,8 @@
 package com.bruno.dsvendas.dto;
 
-import com.bruno.dsvendas.entities.Sale;
 import com.bruno.dsvendas.entities.Seller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class SellerDTO implements Serializable {
 
@@ -14,6 +10,11 @@ public class SellerDTO implements Serializable {
     private String name;
 
     public SellerDTO(){}
+
+    public SellerDTO(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public SellerDTO(Seller seller) {
         id = seller.getId();

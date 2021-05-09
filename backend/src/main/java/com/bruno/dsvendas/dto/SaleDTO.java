@@ -1,7 +1,6 @@
 package com.bruno.dsvendas.dto;
 
 import com.bruno.dsvendas.entities.Sale;
-import com.bruno.dsvendas.entities.Seller;
 
 import java.time.LocalDate;
 
@@ -13,7 +12,18 @@ public class SaleDTO {
     private Double amount;
     private LocalDate date;
 
+    private SellerDTO seller;
+
     public SaleDTO(){}
+
+    public SaleDTO(Long id, Integer visited, Integer deals, Double amount, LocalDate date, SellerDTO seller) {
+        this.id = id;
+        this.visited = visited;
+        this.deals = deals;
+        this.amount = amount;
+        this.date = date;
+        this.seller = seller;
+    }
 
     public SaleDTO(Sale sale) {
         id = sale.getId();
@@ -21,6 +31,7 @@ public class SaleDTO {
         deals = sale.getDeals();
         amount = sale.getAmount();
         date = sale.getDate();
+        seller = new SellerDTO(sale.getSeller());
     }
 
     public Long getId() {
@@ -63,4 +74,11 @@ public class SaleDTO {
         this.date = date;
     }
 
+    public SellerDTO getSeller() {
+        return seller;
+    }
+
+    public void setSeller(SellerDTO seller) {
+        this.seller = seller;
+    }
 }
