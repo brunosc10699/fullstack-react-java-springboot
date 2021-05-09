@@ -1,6 +1,8 @@
 package com.bruno.dsvendas.services;
 
 import com.bruno.dsvendas.dto.SaleDTO;
+import com.bruno.dsvendas.dto.SaleSuccessDTO;
+import com.bruno.dsvendas.dto.SaleSumDTO;
 import com.bruno.dsvendas.entities.Sale;
 import com.bruno.dsvendas.repositories.SaleRepository;
 import com.bruno.dsvendas.repositories.SellerRepository;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SaleService {
@@ -34,5 +35,14 @@ public class SaleService {
         return result.map(SaleDTO::new);
     }
 
+    @Transactional(readOnly = true)
+    public List<SaleSumDTO> amountGroupedBySeller(){
+        return saleRepository.amountGroupedBySeller();
+    }
+
+    @Transactional(readOnly = true)
+    public List<SaleSuccessDTO> successGroupedBySeller(){
+        return saleRepository.successGropedBySeller();
+    }
 
 }
